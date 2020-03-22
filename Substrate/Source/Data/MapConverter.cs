@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
-using System.Drawing.Imaging;
+//using System.Drawing.Imaging;
 
 namespace Substrate.Data
 {
@@ -301,44 +301,44 @@ namespace Substrate.Data
             return _colorIndex[NearestColorIndex(color)];
         }
 
-        /// <summary>
-        /// Fills a <see cref="Map"/>'s color data using nearest-matching colors from a source <see cref="Bitmap"/>.
-        /// </summary>
-        /// <param name="map">The <see cref="Map"/> to modify.</param>
-        /// <param name="bmp">The source <see cref="Bitmap"/>.</param>
-        /// <exception cref="InvalidOperationException">Thrown when the <paramref name="map"/> and <paramref name="bmp"/> objects have different dimensions.</exception>
-        public void BitmapToMap (Map map, Bitmap bmp) 
-        {
-            if (map.Width != bmp.Width || map.Height != bmp.Height) {
-                throw new InvalidOperationException("The source map and bitmap must have the same dimensions.");
-            }
+        ///// <summary>
+        ///// Fills a <see cref="Map"/>'s color data using nearest-matching colors from a source <see cref="Bitmap"/>.
+        ///// </summary>
+        ///// <param name="map">The <see cref="Map"/> to modify.</param>
+        ///// <param name="bmp">The source <see cref="Bitmap"/>.</param>
+        ///// <exception cref="InvalidOperationException">Thrown when the <paramref name="map"/> and <paramref name="bmp"/> objects have different dimensions.</exception>
+        //public void BitmapToMap (Map map, Bitmap bmp) 
+        //{
+        //    if (map.Width != bmp.Width || map.Height != bmp.Height) {
+        //        throw new InvalidOperationException("The source map and bitmap must have the same dimensions.");
+        //    }
 
-            for (int x = 0; x < map.Width; x++) {
-                for (int z = 0; z < map.Height; z++) {
-                    Color c = bmp.GetPixel(x, z);
-                    map[x, z] = (byte)NearestColorIndex(c);
-                }
-            }
-        }
+        //    for (int x = 0; x < map.Width; x++) {
+        //        for (int z = 0; z < map.Height; z++) {
+        //            Color c = bmp.GetPixel(x, z);
+        //            map[x, z] = (byte)NearestColorIndex(c);
+        //        }
+        //    }
+        //}
 
-        /// <summary>
-        /// Creates a 32bpp <see cref="Bitmap"/> from a <see cref="Map"/>.
-        /// </summary>
-        /// <param name="map">The source <see cref="Map"/> object.</param>
-        /// <returns>A 32bpp <see cref="Bitmap"/> with the same dimensions and pixel data as the source <see cref="Map"/>.</returns>
-        public Bitmap MapToBitmap (Map map)
-        {
-            Bitmap bmp = new Bitmap(map.Width, map.Height, PixelFormat.Format32bppArgb);
+        ///// <summary>
+        ///// Creates a 32bpp <see cref="Bitmap"/> from a <see cref="Map"/>.
+        ///// </summary>
+        ///// <param name="map">The source <see cref="Map"/> object.</param>
+        ///// <returns>A 32bpp <see cref="Bitmap"/> with the same dimensions and pixel data as the source <see cref="Map"/>.</returns>
+        //public Bitmap MapToBitmap (Map map)
+        //{
+        //    Bitmap bmp = new Bitmap(map.Width, map.Height, PixelFormat.Format32bppArgb);
 
-            for (int x = 0; x < map.Width; x++) {
-                for (int z = 0; z < map.Height; z++) {
-                    Color c = _colorIndex[map[x, z]];
-                    bmp.SetPixel(x, z, c);
-                }
-            }
+        //    for (int x = 0; x < map.Width; x++) {
+        //        for (int z = 0; z < map.Height; z++) {
+        //            Color c = _colorIndex[map[x, z]];
+        //            bmp.SetPixel(x, z, c);
+        //        }
+        //    }
 
-            return bmp;
-        }
+        //    return bmp;
+        //}
 
         private Vector3 RgbToXyz (Color color)
         {
